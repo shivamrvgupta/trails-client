@@ -1,0 +1,53 @@
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header style="background-color: #f7a09e; color: #3a2672;">
+    <div class="container">
+
+      
+
+      <!--
+        <a href="{% url 'index' %}" class="logo"><img src="wood_yard\static\images\logo-type.png" width="180" height="60"></a>
+      -->
+      <a href="{% url 'index' %}" class="logo"><img src="media\photos\brandassets\logo-type.png" width="180" height="60"></a>
+
+      <div class="header-action">
+        {% if user.is_authenticated %}
+        <button class="header-action-btn" aria-label="user">
+          <a href="{% url 'dashboard' %}"><ion-icon name="person-circle-outline"></ion-icon>
+          </a>
+        </button>
+          <button class="header-action-btn" aria-label="user">
+            <a href="javascript:{document.getElementById('logout').submit()}" ><ion-icon name="person-remove-outline"></ion-icon>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form></a>
+          </button>
+        {% else %}
+          <button class="header-action-btn" aria-label="user">
+            <a href="{% url 'login' %}"><ion-icon name="log-in-outline"></ion-icon>
+            </a>
+          </button>
+          
+          <button class="header-action-btn" aria-label="user">
+            <a href="{% url 'register' %}"><ion-icon name="person-add-outline"></ion-icon></a>
+          </button>
+          
+        {% endif %}  
+        <button class="header-action-btn" aria-label="cart">
+          <a href="{% url 'cart' %}"><ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon></a>
+        </button>
+
+        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+
+

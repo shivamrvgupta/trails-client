@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+  <div class="main">
+    <section class="module">
+      <div class="container">
+        <div class="row-title">
+          <div class="col-sm-6 col-sm-offset-3">
+            <h1 class="module-title font-alt">Checkout</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-striped table-border checkout-table">
+              <tbody>
+                <tr>
+                  <th class="hidden-xs">Item</th>
+                  <th>Description</th>
+                  <th class="hidden-xs">Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th>Remove</th>
+                </tr>
+                
+                {% if lists %}
+                {%for list in lists %}
+                <tr>
+                  <td class="hidden-xs"><a href="#"><img src="{{ list.small_photo }}" alt="Accessories Pack"/></a></td>
+                  <td>
+                    <h5 class="product-title font-alt">{{ list.product }}</h5>
+                  </td>
+                  <td class="hidden-xs">
+                    <h5 class="product-title font-alt">₹{{list.price}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="product-title font-alt">{{list.quantity}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="product-title font-alt">₹{{list.total_amt}}</h5>
+                  </td>
+                  <td class="pr-remove">
+                    <form action="{% url 'delete_data' list.id %}" method="POST" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-sm"><ion-icon name="close-circle-outline"></ion-icon></button>
+                    </form>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="grid-container pb-5">
+          <div class="grid-item">
+            <div class="form-group-cart">
+            <input class="form-control-cart" type="text" id="" name="" placeholder="Coupon code"/>
+            </div>  
+          </div>
+          <div class="grid-item">
+            <div class="form-group-cart apply">
+              <button class="btn-cart btn-block btn-round btn-d pull-right" type="submit">Apply</button>
+            </div>
+          </div>  
+          <div class="grid-item">
+            <div class="form-group-cart update">
+              <button class="btn-cart btn-block btn-round btn-d pull-right" type="submit">Update Cart</button>
+            </div>
+          </div>  
+        </div>
+        <hr class="divider-w">
+        <div class="row mt-70">
+          <div class="col-sm-5 col-sm-offset-7">
+            <div class="shop-Cart-totalbox">
+              <h4 class="font-alt">Cart Totals</h4>
+              <table class="table table-striped table-border checkout-table">
+                <tbody>
+                  <tr>
+                    <th>Cart Subtotal :</th>
+                    <td>₹{{list.total_amt}}</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping Total :</th>
+                    <td>₹40</td>
+                  </tr>
+                  <tr class="shop-Cart-totalprice">
+                    <th>Total :</th>
+                    <td>₹200</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <button class="btn-cart check btn-lg btn-block btn-round btn-d" type="submit"><a href=" {% url 'checkout' %}">Proceed to Checkout</a></button>
+              
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+</main>
+
+    {% endblock %}

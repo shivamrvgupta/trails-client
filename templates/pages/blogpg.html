@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+.style{
+  background-color: #aa9ed0
+}
+<main>
+  <article>
+
+    <!-- 
+      - #HERO
+    -->
+
+    <section class="section hero" id="home" aria-label="home">
+      <div class="container">
+
+        <ul class="hero-list">
+
+          <li>
+            <div class="hero-card">
+
+              <figure class="card-banner img-holder" style="--width: 285; --height: 396;">
+                <img src="{% static 'images/hero-product-1.jpg' %}" width="285" height="396" alt="Art Deco Home"
+                  class="img-cover">
+              </figure>
+
+              <div class="card-content">
+                <h3>
+                  <a href="#" class="card-title">Art Deco Home</a>
+                </h3>
+
+                <p class="card-text">Decoration</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li class="colspan-2">
+            <div class="hero-card">
+
+              <figure class="card-banner img-holder" style="--width: 568; --height: 389;">
+                <img src="{% static 'images/hero-product-2.jpg' %}" width="568" height="389" alt="Helen Chair"
+                  class="img-cover">
+              </figure>
+
+              <div class="card-content">
+                <h3>
+                  <a href="#" class="card-title">Helen Chair</a>
+                </h3>
+
+                <p class="card-text">Decoration</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li>
+            <div class="hero-card">
+
+              <figure class="card-banner img-holder" style="--width: 285; --height: 396;">
+                <img src="{% static 'images/hero-product-3.jpg' %}" width="285" height="396" alt="Vase Of Flowers"
+                  class="img-cover">
+              </figure>
+
+              <div class="card-content">
+                <h3>
+                  <a href="#" class="card-title">Vase Of Flowers</a>
+                </h3>
+
+                <p class="card-text">Decoration</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li class="colspan-2">
+            <div class="hero-card">
+
+              <figure class="card-banner img-holder" style="--width: 580; --height: 213;">
+                <img src="{% static 'images/hero-product-4.jpg' %}" width="580" height="213" alt="Wood Eggs"
+                  class="img-cover">
+              </figure>
+
+              <div class="card-content">
+                <h3>
+                  <a href="#" class="card-title">Wood Eggs</a>
+                </h3>
+
+                <p class="card-text">Decoration</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li class="colspan-2">
+            <div class="hero-card">
+
+              <figure class="card-banner img-holder" style="--width: 580; --height: 213;">
+                <img src="{% static 'images/hero-product-5.jpg' %}" width="580" height="213" alt="Table Wood Pine"
+                  class="img-cover">
+              </figure>
+
+              <div class="card-content">
+                <h3>
+                  <a href="#" class="card-title">Table Wood Pine</a>
+                </h3>
+
+                <p class="card-text">Furniture</p>
+              </div>
+
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 
+      - #ABOUT
+    -->
+
+    <section class="section about" id="about" aria-label="about">
+      <div class="container">
+
+        <h2 class="section-title">Kreatonin Store</h2>
+
+        <p class="section-text">
+        This brand is all about trying to make the daily a lil' more fun by 'kreating' things that provide serotonin ^^ 
+          
+      </p>
+
+        <div class="about-card">
+          <figure class="card-banner img-holder" style="--width: 1170; --height: 450;">
+            <img src="{% static 'images/about-banner.jpg' %}" width="1170" height="450" loading="lazy" alt="Wood-yard promo"
+              class="img-cover">
+          </figure>
+
+          <button class="play-btn" aria-label="play video">
+            <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    {% include "products/listing.html" %}
+
+
+    {% include "products/blogs.html" %}
+
+
+
+
+
+    <!-- 
+      - #NEWSLETTER
+    -->
+
+    <section class="section newsletter" aria-label="newsletter">
+      <div class="container">
+
+        <div class="newsletter-card">
+
+          <div class="card-content">
+            <h2 class="h2 section-title">Our Newsletter</h2>
+
+            <p class="section-text">
+              Subscribe our newsletter and get discount 50% off
+            </p>
+          </div>
+
+          <form action="{% url 'newsletter' %}" method="POST" class="card-form">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Your email address" required class="email-field">
+
+            <button type="submit" class="newsletter-btn" aria-label="subscribe">
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+  </article>
+</main>
+
+
+
+
+{% endblock %}
